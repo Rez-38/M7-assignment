@@ -3,6 +3,9 @@ const $ = (selector) => document.querySelector(selector);
 let form = document.querySelector('#addForm');
 let table = document.querySelector('#employees');
 // SET A COUNT VARIABLE TO DISPLAY NEXT TO EMPLOYEES HEADER
+let count = 0;
+let empCount = $('#empCount');
+empCount.appendChild(document.createTextNode(`(${count})`));
 
 
 // ADD EMPLOYEE
@@ -10,26 +13,26 @@ form.addEventListener('submit', (e) => {
     // PREVENT FORM SUBMISSION
     e.preventDefault();
     // GET THE VALUES FROM THE TEXT BOXES
-    let id = $('#id').value;
+    let id =            $('#id').value;
     console.log(id);
-    let name = $('#name').value;
+    let name =          $('#name').value;
     console.log(name);
-    let extension = $('#extension').value;
+    let extension =     $('#extension').value;
     console.log(extension);
-    let email = $('#email').value;
+    let email =         $('#email').value;
     console.log(email);
-    let department = $('#department').value;
+    let department =    $('#department').value;
     console.log(department);
     // INSERT A NEW ROW AT THE END OF THE EMPLOYEES TABLE
     let row = table.insertRow();
     // INSERT A CELL FOR EACH ITEM WITHIN THE NEW ROW
-    let cellId = row.insertCell();
-    let cellName = row.insertCell();
-    let cellExtension = row.insertCell();
-    let cellEmail = row.insertCell();
-    let cellDepartment = row.insertCell();
+    let cellId =            row.insertCell();
+    let cellName =          row.insertCell();
+    let cellExtension =     row.insertCell();
+    let cellEmail =         row.insertCell();
+    let cellDepartment =    row.insertCell();
     
-    let cellBtn = row.insertCell();
+    let cellDelBtn = row.insertCell();
     // APPEND THE TEXT VALUES AS TEXT NODES WITHIN THE CELLS
     cellId.appendChild(document.createTextNode(id));
     cellName.appendChild(document.createTextNode(name));
@@ -37,13 +40,14 @@ form.addEventListener('submit', (e) => {
     cellEmail.appendChild(document.createTextNode(email));
     cellDepartment.appendChild(document.createTextNode(department));
     // CREATE THE DELETE BUTTON
-    
+    let deleteBtn = document.createElement('button');
+    cellDelBtn.appendChild(deleteBtn);
     // RESET THE FORM
     form.reset();
     // SET FOCUS BACK TO THE ID TEXT BOX
     $('#id').focus();
     // INCREMENENT THE NUMBER OF EMPLOYEES IN THE TABLE
-
+    empCount.innerHTML = `(${++count})`;
 })
 
 // DELETE EMPLOYEE
