@@ -21,13 +21,23 @@ form.addEventListener('submit', (e) => {
     let department = $('#department').value;
     console.log(department);
     // INSERT A NEW ROW AT THE END OF THE EMPLOYEES TABLE
-
+    let row = table.insertRow();
     // INSERT A CELL FOR EACH ITEM WITHIN THE NEW ROW
-
+    let cellId = row.insertCell();
+    let cellName = row.insertCell();
+    let cellExtension = row.insertCell();
+    let cellEmail = row.insertCell();
+    let cellDepartment = row.insertCell();
+    
+    let cellBtn = row.insertCell();
     // APPEND THE TEXT VALUES AS TEXT NODES WITHIN THE CELLS
-
+    cellId.appendChild(document.createTextNode(id));
+    cellName.appendChild(document.createTextNode(name));
+    cellExtension.appendChild(document.createTextNode(extension));
+    cellEmail.appendChild(document.createTextNode(email));
+    cellDepartment.appendChild(document.createTextNode(department));
     // CREATE THE DELETE BUTTON
-
+    
     // RESET THE FORM
     form.reset();
     // SET FOCUS BACK TO THE ID TEXT BOX
