@@ -14,15 +14,11 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     // GET THE VALUES FROM THE TEXT BOXES
     let id =            $('#id').value;
-    console.log(id);
     let name =          $('#name').value;
-    console.log(name);
     let extension =     $('#extension').value;
-    console.log(extension);
     let email =         $('#email').value;
-    console.log(email);
     let department =    $('#department').value;
-    console.log(department);
+    
     // INSERT A NEW ROW AT THE END OF THE EMPLOYEES TABLE
     let row = table.insertRow();
     // INSERT A CELL FOR EACH ITEM WITHIN THE NEW ROW
@@ -57,6 +53,7 @@ table.addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
         if (confirm('Are you sure you want to delete this Employee?')) {
             table.deleteRow(e.target.parentElement.parentElement.rowIndex);
+            // Decrement
             empCount.innerHTML = `(${--count})`;
         }
     }
