@@ -42,7 +42,7 @@ form.addEventListener('submit', (e) => {
     // CREATE THE DELETE BUTTON
     let deleteBtn = document.createElement('button');
     deleteBtn.appendChild(document.createTextNode('X'));
-    deleteBtn.className = 'btn btn-sm btn-danger float-end';
+    deleteBtn.className = 'btn btn-sm btn-danger';
     cellDelBtn.appendChild(deleteBtn);
     // RESET THE FORM
     form.reset();
@@ -50,6 +50,14 @@ form.addEventListener('submit', (e) => {
     $('#id').focus();
     // INCREMENENT THE NUMBER OF EMPLOYEES IN THE TABLE
     empCount.innerHTML = `(${++count})`;
-})
+});
 
 // DELETE EMPLOYEE
+table.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        if (confirm('Are you sure you want to delete this Employee?')) {
+            table.deleteRow(e.target.parentElement.parentElement.rowIndex);
+            empCount.innerHTML = `(${--count})`;
+        }
+    }
+});
